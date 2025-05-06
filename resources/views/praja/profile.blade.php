@@ -62,4 +62,24 @@
         </div>
     </div>
 </div>
+
+<!-- Form reset password -->
+<form action="{{ route('praja.reset-password') }}" method="POST">
+    @csrf
+    <button type="submit" class="bg-blue-900 text-white text-xs px-3 py-1 rounded hover:bg-blue-700">
+        Reset Password
+    </button>
+    @if(session('success'))
+        <div class="bg-green-100 text-green-700 p-2 rounded mb-4">
+            {{ session('success') }}
+        </div>
+    @endif
+    @if(session('error'))
+        <div class="bg-red-100 text-red-700 p-2 rounded mb-4">
+            {{ session('error') }}
+        </div>
+    @endif
+</form>
+
+
 @endsection 
