@@ -1,6 +1,17 @@
 @extends('praja.layout')
 @section('title', 'Profil Praja')
 @section('content')
+@if(session('success'))
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+        <span class="block sm:inline">{{ session('success') }}</span>
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+        <span class="block sm:inline">{{ session('error') }}</span>
+    </div>
+@endif
 <div class="max-w-5xl mx-auto flex flex-col gap-6">
     <!-- Box Nama -->
     <div class="bg-white rounded-lg shadow p-4 flex items-center gap-4 mb-2">
@@ -14,9 +25,11 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Data Diri -->
         <div class="bg-white rounded-lg shadow p-4 flex flex-col gap-2 border border-gray-300 col-span-1">
-            <div class="flex items-center justify-between mb-2">
-                <div class="font-bold text-lg">DATA DIRI</div>
-                <button class="bg-blue-900 text-white text-xs px-3 py-1 rounded hover:bg-blue-700">Reset Password</button>
+            <div class="flex justify-between items-center mb-4">
+                <div class="font-semibold text-blue-900 text-base">DATA DIRI</div>
+                <a href="{{ route('praja.reset-password-form') }}" class="bg-blue-900 text-white text-xs px-3 py-1 rounded hover:bg-blue-700">
+                    Reset Password
+                </a>
             </div>
             <div class="flex items-center gap-3 mb-2">
                 <i class="fa fa-user-circle text-5xl text-gray-400"></i>
@@ -64,22 +77,36 @@
 </div>
 
 <!-- Form reset password -->
-<form action="{{ route('praja.reset-password') }}" method="POST">
-    @csrf
-    <button type="submit" class="bg-blue-900 text-white text-xs px-3 py-1 rounded hover:bg-blue-700">
-        Reset Password
-    </button>
+<div class="bg-white rounded-lg shadow-md p-6 mb-6 border">
+    <h3 class="font-semibold text-blue-900 text-base mb-4">Pengaturan Password</h3>
+    
+    <div class="flex flex-col md:flex-row md:items-center gap-4">
+        <a href="{{ route('praja.reset-password-form') }}" class="bg-yellow-500 text-white px-4 py-2 rounded shadow hover:bg-yellow-600 flex items-center gap-2 inline-block">
+            <i class="fa fa-refresh"></i> Reset Password
+        </a>
+        
+        <a href="{{ route('praja.change-password-form') }}" class="bg-blue-700 text-white px-4 py-2 rounded shadow hover:bg-blue-800 flex items-center gap-2 inline-block">
+            <i class="fa fa-key"></i> Ubah Password
+        </a>
+    </div>
+    
     @if(session('success'))
-        <div class="bg-green-100 text-green-700 p-2 rounded mb-4">
+        <div class="bg-green-100 text-green-700 p-2 rounded mt-4">
             {{ session('success') }}
         </div>
     @endif
     @if(session('error'))
-        <div class="bg-red-100 text-red-700 p-2 rounded mb-4">
+        <div class="bg-red-100 text-red-700 p-2 rounded mt-4">
             {{ session('error') }}
         </div>
     @endif
-</form>
-
+</div>
 
 @endsection 
+
+
+
+
+
+
+

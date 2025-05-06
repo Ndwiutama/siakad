@@ -57,7 +57,10 @@ Route::middleware(['auth', 'role:praja'])->name('praja.')->prefix('praja')->grou
     Route::get('/dashboard', [App\Http\Controllers\Praja\DashboardController::class, 'index'])->name('dashboard');
     Route::get('/jadwal', [App\Http\Controllers\Praja\JadwalController::class, 'index'])->name('jadwal');
     Route::get('/profile', function () { return view('praja.profile'); })->name('profile');
-    Route::post('/reset-password', [App\Http\Controllers\Praja\ProfileController::class, 'resetPassword'])->name('reset-password'); // Pindahkan ke sini
+    Route::get('/reset-password-form', [\App\Http\Controllers\Praja\ProfileController::class, 'showResetPasswordForm'])->name('reset-password-form');
+    Route::post('/reset-password', [\App\Http\Controllers\Praja\ProfileController::class, 'resetPassword'])->name('reset-password');
+    Route::get('/change-password', [\App\Http\Controllers\Praja\ProfileController::class, 'showChangePasswordForm'])->name('change-password-form');
+    Route::post('/change-password', [\App\Http\Controllers\Praja\ProfileController::class, 'changePassword'])->name('change-password');
     Route::get('/krs', [\App\Http\Controllers\Praja\KrsController::class, 'index'])->name('krs');
     Route::get('/krs/pdf', [\App\Http\Controllers\Praja\KrsController::class, 'exportPdf'])->name('krs.pdf');
     Route::get('/khs', [\App\Http\Controllers\Praja\KhsController::class, 'index'])->name('khs');
@@ -68,6 +71,12 @@ Route::middleware(['auth', 'role:praja'])->name('praja.')->prefix('praja')->grou
     Route::get('/informasi', function () { return view('praja.informasi'); })->name('informasi');
     Route::get('/elearning', function () { return view('praja.elearning'); })->name('elearning');
 });
+
+
+
+
+
+
 
 
 
