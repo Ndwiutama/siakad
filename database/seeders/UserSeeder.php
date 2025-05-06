@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -15,27 +14,36 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         // Create Admin
-        User::create([
-            'name' => 'Administrator',
-            'email' => 'admin@ipdn.ac.id',
-            'password' => Hash::make('admin123'),
-            'role' => 'admin',
-        ]);
+        User::updateOrCreate(
+            ['email' => 'admin@ipdn.ac.id'],
+            [
+                'name' => 'Administrator',
+                'username' => 'admin2', // ✅ tambahkan ini
+                'password' => Hash::make('admin123'),
+                'role' => 'admin',
+            ]
+        );
 
         // Create Dosen
-        User::create([
-            'name' => 'Dr. Budi Santoso',
-            'email' => 'dosen@ipdn.ac.id',
-            'password' => Hash::make('dosen123'),
-            'role' => 'dosen',
-        ]);
+        User::updateOrCreate(
+            ['email' => 'dosen@ipdn.ac.id'],
+            [
+                'name' => 'Dr. Budi Santoso',
+                'username' => 'dosen1', // ✅ tambahkan ini
+                'password' => Hash::make('dosen123'),
+                'role' => 'dosen',
+            ]
+        );
 
         // Create Praja
-        User::create([
-            'name' => 'Ahmad Praja',
-            'email' => 'praja@ipdn.ac.id',
-            'password' => Hash::make('praja123'),
-            'role' => 'praja',
-        ]);
+        User::updateOrCreate(
+            ['email' => 'praja@ipdn.ac.id'],
+            [
+                'name' => 'Ahmad Praja',
+                'username' => 'praja1', // ✅ tambahkan ini
+                'password' => Hash::make('praja123'),
+                'role' => 'praja',
+            ]
+        );
     }
 }
