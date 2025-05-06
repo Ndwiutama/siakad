@@ -59,10 +59,16 @@ Route::middleware(['auth', 'role:praja'])->name('praja.')->prefix('praja')->grou
     Route::get('/profile', function () { return view('praja.profile'); })->name('profile');
     Route::get('/krs', [\App\Http\Controllers\Praja\KrsController::class, 'index'])->name('krs');
     Route::get('/krs/pdf', [\App\Http\Controllers\Praja\KrsController::class, 'exportPdf'])->name('krs.pdf');
-    Route::get('/khs', function () { return view('praja.khs'); })->name('khs');
+    Route::get('/khs', [\App\Http\Controllers\Praja\KhsController::class, 'index'])->name('khs');
+    Route::get('/khs/pdf', [\App\Http\Controllers\Praja\KhsController::class, 'exportPdf'])->name('khs.pdf');
     Route::get('/kuesioner', function () { return view('praja.kuesioner'); })->name('kuesioner');
     Route::get('/tugas-akhir', function () { return view('praja.tugas_akhir'); })->name('tugas_akhir');
     Route::get('/kontak', function () { return view('praja.kontak'); })->name('kontak');
     Route::get('/informasi', function () { return view('praja.informasi'); })->name('informasi');
     Route::get('/elearning', function () { return view('praja.elearning'); })->name('elearning');
 });
+
+
+
+
+
