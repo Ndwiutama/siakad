@@ -1,17 +1,50 @@
 @extends('praja.layout')
 @section('title', 'Profil Praja')
 @section('content')
-@if(session('success'))
-    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
-        <span class="block sm:inline">{{ session('success') }}</span>
+
+<!-- Pop-up Notification -->
+@if(session('success') || session('error'))
+<div id="notification" class="fixed top-20 right-4 z-50 max-w-sm">
+    @if(session('success'))
+    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded shadow-md flex justify-between items-center">
+        <div>
+            <p class="font-bold">Berhasil!</p>
+            <p>{{ session('success') }}</p>
+        </div>
+        <button onclick="closeNotification()" class="text-green-700">
+            <i class="fa fa-times"></i>
+        </button>
     </div>
+    @endif
+    
+    @if(session('error'))
+    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded shadow-md flex justify-between items-center">
+        <div>
+            <p class="font-bold">Error!</p>
+            <p>{{ session('error') }}</p>
+        </div>
+        <button onclick="closeNotification()" class="text-red-700">
+            <i class="fa fa-times"></i>
+        </button>
+    </div>
+    @endif
+</div>
+
+<script>
+    // Auto close notification after 5 seconds
+    setTimeout(function() {
+        var notification = document.getElementById('notification');
+        if (notification) {
+            notification.style.display = 'none';
+        }
+    }, 5000);
+    
+    function closeNotification() {
+        document.getElementById('notification').style.display = 'none';
+    }
+</script>
 @endif
 
-@if(session('error'))
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
-        <span class="block sm:inline">{{ session('error') }}</span>
-    </div>
-@endif
 <div class="max-w-5xl mx-auto flex flex-col gap-6">
     <!-- Box Nama -->
     <div class="bg-white rounded-lg shadow p-4 flex items-center gap-4 mb-2">
@@ -103,6 +136,8 @@
 </div>
 
 @endsection 
+
+
 
 
 

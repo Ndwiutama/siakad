@@ -24,7 +24,7 @@ class ProfileController extends Controller
 
         // Jika user tidak ditemukan, tambahkan pesan error
         if (!$user) {
-            return redirect()->back()->with('error', 'Gagal mereset password.');
+            return redirect()->route('praja.profile')->with('error', 'Gagal mereset password.');
         }
 
         // Ambil password baru dari request
@@ -39,8 +39,8 @@ class ProfileController extends Controller
         // Trigger event password reset
         event(new PasswordReset($user));
 
-        // Kirim respons sukses
-        return redirect()->back()->with('success', "Password berhasil direset ke: $newPassword");
+        // Redirect langsung ke halaman profil dengan pesan sukses
+        return redirect()->route('praja.profile')->with('success', 'Password berhasil direset.');
     }
 
     public function showResetPasswordForm()
@@ -81,6 +81,9 @@ class ProfileController extends Controller
         return redirect()->route('praja.profile')->with('success', 'Password berhasil diubah');
     }
 }
+
+
+
 
 
 
