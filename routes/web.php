@@ -57,6 +57,10 @@ Route::middleware(['auth', 'role:praja'])->name('praja.')->prefix('praja')->grou
     Route::get('/dashboard', [App\Http\Controllers\Praja\DashboardController::class, 'index'])->name('dashboard');
     Route::get('/jadwal', [App\Http\Controllers\Praja\JadwalController::class, 'index'])->name('jadwal');
     Route::get('/profile', function () { return view('praja.profile'); })->name('profile');
+    Route::get('/rencana-studi', function () { return view('praja.rencana_studi'); })->name('rencana-studi');
+    Route::get('/hasil-studi', function () { return view('praja.hasil_studi'); })->name('hasil-studi');
+    Route::get('/seminar-proposal', function () { return view('praja.seminar_proposal'); })->name('seminar-proposal');
+    Route::get('/kerja-praktek', function () { return view('praja.kerja_praktek'); })->name('kerja-praktek');
     Route::get('/reset-password-form', [\App\Http\Controllers\Praja\ProfileController::class, 'showResetPasswordForm'])->name('reset-password-form');
     Route::post('/reset-password', [\App\Http\Controllers\Praja\ProfileController::class, 'resetPassword'])->name('reset-password');
     Route::get('/change-password', [\App\Http\Controllers\Praja\ProfileController::class, 'showChangePasswordForm'])->name('change-password-form');
