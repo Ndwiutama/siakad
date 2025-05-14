@@ -70,6 +70,10 @@ Route::middleware(['auth', 'role:praja'])->name('praja.')->prefix('praja')->grou
     Route::get('/khs', [\App\Http\Controllers\Praja\KhsController::class, 'index'])->name('khs');
     Route::get('/khs/pdf', [\App\Http\Controllers\Praja\KhsController::class, 'exportPdf'])->name('khs.pdf');
     Route::get('/kuesioner', function () { return view('praja.kuesioner'); })->name('kuesioner');
+    Route::get('/kuesioner', [\App\Http\Controllers\Praja\KuesionerController::class, 'index'])->name('kuesioner');
+    Route::post('/kuesioner/jawab', [\App\Http\Controllers\Praja\KuesionerController::class, 'jawab'])->name('kuesioner.jawab');
+    Route::get('/layanan', [\App\Http\Controllers\Praja\LayananController::class, 'index'])->name('layanan');
+    Route::post('/kritik-saran', [\App\Http\Controllers\Praja\KritikSaranController::class, 'store'])->name('kritik-saran.store');
     Route::get('/tugas-akhir', function () { return view('praja.tugas_akhir'); })->name('tugas_akhir');
     Route::get('/kontak', function () { return view('praja.kontak'); })->name('kontak');
     Route::get('/informasi', function () { return view('praja.informasi'); })->name('informasi');
