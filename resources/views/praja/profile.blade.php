@@ -1,7 +1,6 @@
 @extends('praja.layout')
 @section('title', 'Profil Praja')
 @section('content')
-<<<<<<< HEAD
 
 <!-- Pop-up Notification -->
 @if(session('success') || session('error'))
@@ -75,12 +74,6 @@
     <!-- Header Nama -->
     <div class="bg-white rounded-t-xl shadow p-4 flex items-center gap-4 mb-0 border-b">
         <i class="fa fa-user-circle text-4xl text-gray-700"></i>
-=======
-<div class="max-w-5xl mx-auto flex flex-col gap-6">
-    <!-- Box Nama -->
-    <div class="bg-white rounded-lg shadow p-4 flex items-center gap-4 mb-2">
-        <i class="fa fa-user-circle text-3xl text-gray-500"></i>
->>>>>>> 1efa94733e1c7ee69da685f80c5bd67defcb2b7a
         <div>
             <div class="font-bold text-xl text-gray-900">Nama Praja</div>
             <div class="text-gray-500 text-sm">NPP</div>
@@ -88,17 +81,10 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Data Diri -->
-<<<<<<< HEAD
         <div class="bg-white rounded-xl shadow p-6 flex flex-col gap-2 border col-span-2">
             <div class="flex justify-between items-center mb-4">
                 <div class="font-bold text-lg text-gray-900">DATA DIRI</div>
                 <button @click="openEdit()" class="bg-blue-900 text-white px-4 py-2 rounded shadow hover:bg-blue-800 text-sm">Edit Data Diri</button>
-=======
-        <div class="bg-white rounded-lg shadow p-4 flex flex-col gap-2 border border-gray-300 col-span-1">
-            <div class="flex items-center justify-between mb-2">
-                <div class="font-bold text-lg">DATA DIRI</div>
-                <button class="bg-blue-900 text-white text-xs px-3 py-1 rounded hover:bg-blue-700">Reset Password</button>
->>>>>>> 1efa94733e1c7ee69da685f80c5bd67defcb2b7a
             </div>
             <div class="flex items-center gap-4 mb-4">
                 <i class="fa fa-user-circle text-6xl text-gray-400"></i>
